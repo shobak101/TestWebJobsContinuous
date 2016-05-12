@@ -77,9 +77,19 @@ IF /I "TwitterConnector.sln" NEQ "" (
 call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\TwitterConnector\TwitterConnector.csproj" /nologo /verbosity:m /t:Build /p:Configuration=Release;OutputPath="%DEPLOYMENT_TEMP%\app_data\jobs\continuous\deployedJob";UseSharedCompilation=false /p:SolutionDir="%DEPLOYMENT_SOURCE%\.\\" %SCM_BUILD_ARGS%
 IF !ERRORLEVEL! NEQ 0 goto error
 
+<<<<<<< HEAD
 :: 3. Run web job deploy script
 IF DEFINED WEBJOBS_DEPLOY_CMD (
   call :ExecuteCmd "%WEBJOBS_DEPLOY_CMD%"
+=======
+:: 3. KuduSync
+IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
+  call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_TEMP%" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
+  IF !ERRORLEVEL! NEQ 0 goto error
+  
+  ::call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%\TwitterConnector.WebAPI -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
+  ::IF !ERRORLEVEL! NEQ 0 goto error
+>>>>>>> 5d296ad502d4339ecd82dbb51ec9a54bdccd3a7f
 )
 
 :: 4. KuduSync
