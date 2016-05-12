@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.IO;
 using System.Reflection;
+using TwitterConnector.WebAPI;
 
 namespace TwitterConnector.WebAPI.Controllers
 {
@@ -13,8 +14,8 @@ namespace TwitterConnector.WebAPI.Controllers
     {
         public HttpResponseMessage Get()
         {
-            var ret = new KeyValuePair<string, string>("key", "value");
-            //File.ReadAllText(Path.Combine(Assembly.GetExecutingAssembly().Location,"KeyWords.txt"));
+            String KeyWords = File.ReadAllText(Constants.KeyWordsFileLocation);
+            var ret = new KeyValuePair<string, String[]>("key", KeyWords.Split(','));
             return Request.CreateResponse(HttpStatusCode.OK, ret);
         }
     }
