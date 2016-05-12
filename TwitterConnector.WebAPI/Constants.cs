@@ -8,7 +8,7 @@ namespace TwitterConnector.WebAPI
 {
     public class Constants
     {
-        public static String JobLocation = @"D:\home\wwwroot\app_data\jobs\continuous\deployedjob";
+        public static String JobLocation = @"D:\home\site\wwwroot\app_data\jobs\continuous\deployedjob";
         public static String KeyWordsFileName = "KeyWords.txt";
         public static String KeyWordsFileLocation = Path.Combine(JobLocation, KeyWordsFileName);
     }
