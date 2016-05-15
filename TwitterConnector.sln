@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterConnector.WebAPI", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataCollector", "DataCollector\DataCollector.csproj", "{A19A934F-23A8-4DC7-8340-11A1F8C7D63C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataModel", "DataModel\DataModel.csproj", "{4FF7CB3A-0209-4BAE-9FB7-93F66EDFF50C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A19A934F-23A8-4DC7-8340-11A1F8C7D63C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A19A934F-23A8-4DC7-8340-11A1F8C7D63C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A19A934F-23A8-4DC7-8340-11A1F8C7D63C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FF7CB3A-0209-4BAE-9FB7-93F66EDFF50C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FF7CB3A-0209-4BAE-9FB7-93F66EDFF50C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FF7CB3A-0209-4BAE-9FB7-93F66EDFF50C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FF7CB3A-0209-4BAE-9FB7-93F66EDFF50C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

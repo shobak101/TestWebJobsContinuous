@@ -7,6 +7,7 @@ using DataCollector;
 using Tweetinvi;
 using System.IO;
 using Tweetinvi.Core.Interfaces.Streaminvi;
+using DataModel;
 
 namespace TwitterConnector
 {
@@ -39,9 +40,16 @@ namespace TwitterConnector
             _stream.MatchingTweetReceived += (sender, arguments) =>
             {
                 string message = "A tweet containing '" + arguments.MatchingTracks[0] + "' has been found; the tweet is '" + arguments.Tweet + "' created by " + arguments.Tweet.CreatedBy;
-                outputFile.WriteLine(message);
-                outputFile.Flush();
                 Console.WriteLine(message);
+                RawDataEntry entry = new RawDataEntry
+                {
+                    Id = "",
+                    Source = "Twitter",
+                    Author = arguments.Tweet.CreatedBy.ToString(),
+                    Content = arguments.Tweet.ToString(),
+                    TimeStamp = arguments.Tweet.CreatedAt
+                };
+                entry.Commit();
             };
         }
 
