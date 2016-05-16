@@ -15,9 +15,12 @@ namespace DataModel
         {
             try
             {
-                SqlConnection.Open();
+                if (SqlConnection.State != System.Data.ConnectionState.Open)
+                {
+                    SqlConnection.Open();
+                }
                 String command = String.Format("INSERT INTO RAWDATATABLE (source,author,timestamp,content) VALUES ({0},{1},{2},{3})", entry.Source, entry.Author, entry.TimeStamp, entry.Content);
-                SqlCommand sqlCommand = new SqlCommand("", SqlConnection);
+                SqlCommand sqlCommand = new SqlCommand(command, SqlConnection);
                 sqlCommand.ExecuteNonQuery();
             }
             catch (Exception e)
