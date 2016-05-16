@@ -13,10 +13,17 @@ namespace DataModel
         private static SqlConnection SqlConnection = new SqlConnection(ConnectionString);
         public static void RecordRawData(RawDataEntry entry)
         {
-            SqlConnection.Open();
-            String command = String.Format("INSERT INTO RAWDATATABLE (source,author,timestamp,content) VALUES ({0},{1},{2},{3})", entry.Source, entry.Author, entry.TimeStamp, entry.Content);
-            SqlCommand sqlCommand = new SqlCommand("",SqlConnection);
-            sqlCommand.ExecuteNonQuery();
+            try
+            {
+                SqlConnection.Open();
+                String command = String.Format("INSERT INTO RAWDATATABLE (source,author,timestamp,content) VALUES ({0},{1},{2},{3})", entry.Source, entry.Author, entry.TimeStamp, entry.Content);
+                SqlCommand sqlCommand = new SqlCommand("", SqlConnection);
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Committing to SQL failed with exception: {0}", e);
+            }
         }
     }
 }
