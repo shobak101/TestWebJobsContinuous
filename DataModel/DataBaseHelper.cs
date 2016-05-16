@@ -19,7 +19,7 @@ namespace DataModel
                 {
                     SqlConnection.Open();
                 }
-                String command = String.Format("INSERT INTO RAWDATATABLE (source,author,timestamp,content) VALUES ({0},{1},{2},{3})", entry.Source, entry.Author, entry.TimeStamp, entry.Content);
+                String command = String.Format("INSERT INTO RAWDATATABLE (source,author,timestamp,content) VALUES ('{0}','{1}','{2}','{3}')", entry.Source, entry.Author, entry.TimeStamp, entry.Content);
                 SqlCommand sqlCommand = new SqlCommand(command, SqlConnection);
                 sqlCommand.ExecuteNonQuery();
             }
